@@ -53,7 +53,6 @@ export default function ChatRoom() {
                
                setUsers(clients)
 
-            //    setCode(code)
 
                socketRef.current.emit(ACTIONS.SYNC_MESSAGE,{
                 socketId,
@@ -75,22 +74,11 @@ export default function ChatRoom() {
 
 
             socketRef.current.on(ACTIONS.MESSAGE_SENT,({message})=>{
-                
+                console.log(message)
                 setMessages(prevMessages => [...prevMessages, message]);
 
               
             })
-
-            
-           
-            
-
-            
-            
-
-
-
-            
 
 
         }
@@ -109,9 +97,6 @@ export default function ChatRoom() {
 
     const sendMessage=()=>{
 
-       
-         
-        
         socketRef.current.emit(ACTIONS.MESSAGE_SENT,{
             roomId,
             message: {name:isAuthenticated().data.user.name,message:code}
