@@ -12,7 +12,7 @@ function App() {
   
   return (
     <div style={{backgroundColor:"#1c2333",  background: 'linear-gradient(to right, #8e44ad, #3498db, #00cec9)'}}>
-    <BrowserRouter>
+    <HashRouter>
         <Navbar/>
     <Routes>
       <Route path='/' element={<Home/>}></Route>
@@ -23,7 +23,7 @@ function App() {
 
     </Routes>
     
-    </BrowserRouter>
+    </HashRouter>
     </div>
   );
 }
