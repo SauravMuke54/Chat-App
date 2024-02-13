@@ -56,7 +56,7 @@ export default function ChatRoom() {
 
                socketRef.current.emit(ACTIONS.SYNC_MESSAGE,{
                 socketId,
-                code
+                message: {name:isAuthenticated().data.user.name,message:"I have joined the room"}
                })
 
 
