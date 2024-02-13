@@ -20,7 +20,7 @@ const userSocketMap = {};
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors(['https://chatapp-twkw.onrender.com/']));
 
 mongoose.connect(DB).then(() => {
   console.log("DB connected");
@@ -40,7 +40,8 @@ function getAllConnectedClients(roomId) {
 }
 
 io.on("connection", (socket) => {
-  // console.log("socket connected", socket.id);
+   console.log("socket connected", socket.id);
+
 
   socket.on(ACTIONS.JOIN, ({ roomId, name }) => {
     userSocketMap[socket.id] = name;
@@ -60,17 +61,17 @@ io.on("connection", (socket) => {
 
   });
 
-  socket.on(ACTIONS.MESSAGE_SENT,({roomId,code})=>{
-    
-    io.to(roomId).emit(ACTIONS.MESSAGE_SENT,{code})
+  socket.on(ACTIONS.MESSAGE_SENT,({roomId,message})=>{
+    console.log("hiii",message)
+    io.to(roomId).emit(ACTIONS.MESSAGE_SENT,{message})
 
   })
 
-  socket.on(ACTIONS.SYNC_MESSAGE,({socketId,code})=>{
+  socket.on(ACTIONS.SYNC_MESSAGE,({socketId,message})=>{
 
     console.log(socketId)
     
-    io.to(socketId).emit(ACTIONS.MESSAGE_SENT,{code})
+    io.to(socketId).emit(ACTIONS.MESSAGE_SENT,{message})
 
   })
 
