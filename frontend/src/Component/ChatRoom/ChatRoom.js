@@ -16,7 +16,7 @@ export default function ChatRoom() {
     
    
     const [code,setCode]=useState("")
-    const [messages,setMessages]=useState([])
+    const [messages,setMessages]=useState([{}])
     const [users, setUsers] = useState([]);
     const socketRef=useRef(null)
     const editorRef=useRef(null)
