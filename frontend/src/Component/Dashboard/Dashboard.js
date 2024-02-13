@@ -16,8 +16,6 @@ export default function Dashboard() {
         setRoomId(id)
     }
 
-
-
     const navigateToEditor=()=>{
         if(!roomId){
             setErr("Set Room Id")
