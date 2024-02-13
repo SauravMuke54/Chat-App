@@ -4,7 +4,7 @@ import { isAuthenticated } from "./index";
 
 const PrivateRoute = ({ children, ...rest }) => {
   return (
-    <div>{isAuthenticated() ? children : <Navigate to="/userdashboard" />}</div>
+    <div>{isAuthenticated() ? children : <Navigate to="/dashboard" />}</div>
   );
 };
 
